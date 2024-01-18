@@ -4,14 +4,12 @@ import type { DocumentHead } from "@builder.io/qwik-city";
 import Hero from "../components/starter/hero/hero";
 import Infobox from "../components/starter/infobox/infobox";
 
-const POSTER_SRC = "https://lh3.googleusercontent.com/drive-viewer/AEYmBYQzjl7BJOvAwfnUZmW4FojGyNE8XxwOCUsYLtnCClh8UQbd5Q95Iyg5yvSZiuDoZHzJ-_B3v3OJAMkSE85onuHAxXatbA=w1920-h1080-k-pd"
 const VIDEO_SRC = "https://res.cloudinary.com/dt7vd3bx7/video/upload/f_auto:video,q_auto/Technical_Video_Creator_ztfyc9"
 
 export default component$(() => {
   const videoElementSignal = useSignal<HTMLAudioElement | undefined>();
   const videoPlayButtonSignal = useSignal<HTMLButtonElement | undefined>();
   const videoIsPlayingSignal = useSignal(false);
-  const playsInlineSignal = useSignal(true);
 
   useVisibleTask$(({ track }) => {
     track(() => videoPlayButtonSignal.value);
