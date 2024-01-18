@@ -111,6 +111,12 @@ export default component$(() => {
                   LinkedIn
                 </a>
               </li>
+              <li>
+                <span>Send us an </span>
+                <a href="mailto:contacs@fullstackish.io" target="_blank">
+                  email
+                </a>
+              </li>
             </ul>
           </Infobox>
         </div>
@@ -120,11 +126,11 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "Fullstackish | Technical Video content creations and Software Development",
+  title: "Fullstackish | Technical Video content creation and Software Development",
   meta: [
     {
       name: "description",
-      content: "Technical video content creations for the biggest technology-related blogs in the world and software development focused on the design and development of web applications",
+      content: "Technical video content creation for the biggest technology-related blogs in the world and software development focused on the design and development of web applications",
     },
   ],
 };
