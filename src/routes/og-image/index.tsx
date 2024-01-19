@@ -3,11 +3,14 @@ import { fetchFont, ImageResponse, html } from 'og-img';
  
 export const onGet: RequestHandler = async ({ send }) => {
 
-  console.log("import.meta.env.PUBLIC_WEBSITE_URL")
-  console.log("---->"+import.meta.env.PUBLIC_WEBSITE_URL)
+ 
     
     const fontDirUrl = import.meta.env.PUBLIC_WEBSITE_URL + '/fonts';
     const iconUrl = import.meta.env.PUBLIC_WEBSITE_URL + '/logo-inverse-148x64.png';
+
+
+    console.log("import.meta.env.PUBLIC_WEBSITE_URL")
+    console.log("---->"+fontDirUrl)
 
   send(
     new ImageResponse(
