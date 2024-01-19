@@ -2,15 +2,9 @@ import type { RequestHandler } from '@builder.io/qwik-city';
 import { fetchFont, ImageResponse, html } from 'og-img';
  
 export const onGet: RequestHandler = async ({ send }) => {
-
- 
     
-    const fontDirUrl = import.meta.env.PUBLIC_WEBSITE_URL + '/fonts';
-    const iconUrl = import.meta.env.PUBLIC_WEBSITE_URL + '/logo-inverse-148x64.png';
-
-
-    console.log("import.meta.env.PUBLIC_WEBSITE_URL")
-    console.log("---->"+fontDirUrl)
+  const fontDirUrl = import.meta.env.PUBLIC_WEBSITE_URL + '/fonts';
+  const iconUrl = import.meta.env.PUBLIC_WEBSITE_URL + '/logo-inverse-148x64.png';
 
   send(
     new ImageResponse(
