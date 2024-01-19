@@ -155,6 +155,26 @@ export const head: DocumentHead = () => {
         property: "og:description",
         content: "Bespoke technical video creation for your IT brand. Engage audiences, spotlight innovations. Elevate your digital presence with our expertly crafted video solutions.",
       },
+      {
+        property: "og:image:width",
+        content: "1200",
+      },
+      {
+        property: "og:image:height",
+        content: "630",
+      },
+      {
+        property: "og:image:type",
+        content: "image/png",
+      },
+      {
+        property: "og:locale",
+        content: "en_US",
+      },
+      {
+        property: "og:url",
+        content: "https://www.fullstackish.io",
+      },
     ],
   };
 };
