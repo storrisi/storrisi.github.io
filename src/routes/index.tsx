@@ -134,7 +134,7 @@ export const head: DocumentHead = ({ url }) => ({
     },
     {
       property: 'og:image',
-      content: `${url.origin}/og-image`,
+      content: `${import.meta.env.PUBLIC_WEBSITE_URL}/og-image`,
     }
   ],
 });
