@@ -125,12 +125,16 @@ export default component$(() => {
   );
 });
 
-export const head: DocumentHead = {
+export const head: DocumentHead = ({ url }) => ({
   title: "Fullstackish | Technical Video content creation and Software Development",
   meta: [
     {
       name: "description",
       content: "Technical video content creation for the biggest technology-related blogs in the world and software development focused on the design and development of web applications",
     },
+    {
+      property: 'og:image',
+      content: `${url.origin}/og-image`,
+    }
   ],
-};
+});
