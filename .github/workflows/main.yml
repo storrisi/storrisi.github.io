@@ -41,7 +41,7 @@ jobs:
         run: echo "PUBLIC_WEBSITE_URL=${{ secrets.PUBLIC_WEBSITE_URL }}" >> "$GITHUB_OUTPUT"
       - name: Build
         env:
-          PUBLIC_WEBSITE_URL: "https://www.fullstackish.io"
+          PUBLIC_WEBSITE_URL: ${{ secrets.PUBLIC_WEBSITE_URL }}
         run: npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v3
