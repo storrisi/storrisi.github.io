@@ -21,7 +21,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  PUBLIC_WEBSITE_URL: ${{ vars.PUBLIC_WEBSITE_URL }}
+  PUBLIC_WEBSITE_URL: ${{ secrets.PUBLIC_WEBSITE_URL }}
 
 jobs:
   # Single deploy job since we're just deploying
