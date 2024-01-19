@@ -20,9 +20,6 @@ concurrency:
   group: 'pages'
   cancel-in-progress: true
 
-env:
-  PUBLIC_WEBSITE_URL: "https://www.fullstackish.io"
-
 jobs:
   # Single deploy job since we're just deploying
   deploy:
@@ -43,6 +40,8 @@ jobs:
       - name: Logs
         run: echo "PUBLIC_WEBSITE_URL=${{ secrets.PUBLIC_WEBSITE_URL }}" >> "$GITHUB_OUTPUT"
       - name: Build
+        env:
+          PUBLIC_WEBSITE_URL: "https://www.fullstackish.io"
         run: npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v3
