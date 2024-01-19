@@ -136,16 +136,16 @@ export const head: DocumentHead = () => {
   const siteUrl = import.meta.env.PUBLIC_WEBSITE_URL;
   return {
     title:
-      "Fullstackish | Technical Video content creation and Software Development",
+      "Fullstackish | Bespoke IT Technical Videos: engage, showcase, elevate brand",
     meta: [
       {
         name: "description",
         content:
-          "Technical video content creation for the biggest technology-related blogs in the world and software development focused on the design and development of web applications",
+          "Bespoke technical video creation for your IT brand. Engage audiences, spotlight innovations. Elevate your digital presence with our expertly crafted video solutions.",
       },
       {
         property: "og:image",
-        content: `${siteUrl}/og-image`,
+        content: `${siteUrl}/og-image.png`,
       },
     ],
   };

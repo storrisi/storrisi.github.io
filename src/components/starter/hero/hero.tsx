@@ -12,18 +12,7 @@ export default component$(() => {
         tailored <span class="highlight">for you</span>
       </h1>
       <h2 class="secondary-text">We create professional videos designed to market tech companies.</h2>
-      <div class={styles["button-group"]}>
-        <button
-        onClick$={() => window.open("https://calendly.com/simo-15/30min", "_blank")}
-        >
-          📞 Book a call
-        </button>
-        <button class="button-dark"
-        onClick$={() => window.open("mailto:contacts@fullstackish.io", "_blank")}
-        >
-          ✉️ Hire us
-        </button>
-      </div>
+      
     </div>
   );
 });
