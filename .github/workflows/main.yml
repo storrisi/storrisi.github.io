@@ -21,7 +21,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  PUBLIC_WEBSITE_URL: ${{ secrets.PUBLIC_WEBSITE_URL }}
+  PUBLIC_WEBSITE_URL: "https://www.fullstackish.io"
 
 jobs:
   # Single deploy job since we're just deploying
