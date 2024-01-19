@@ -4,7 +4,8 @@ import type { DocumentHead } from "@builder.io/qwik-city";
 import Hero from "../components/starter/hero/hero";
 import Infobox from "../components/starter/infobox/infobox";
 
-const VIDEO_SRC = "https://res.cloudinary.com/dt7vd3bx7/video/upload/f_auto:video,q_auto/Technical_Video_Creator_ztfyc9"
+const VIDEO_SRC =
+  "https://res.cloudinary.com/dt7vd3bx7/video/upload/f_auto:video,q_auto/Technical_Video_Creator_ztfyc9";
 
 export default component$(() => {
   const videoElementSignal = useSignal<HTMLAudioElement | undefined>();
@@ -14,15 +15,15 @@ export default component$(() => {
   useVisibleTask$(({ track }) => {
     track(() => videoPlayButtonSignal.value);
     track(() => videoElementSignal.value);
- 
+
     const play = () =>
       videoIsPlayingSignal.value
         ? videoElementSignal.value?.pause()
         : videoElementSignal.value?.play();
- 
-    videoPlayButtonSignal.value?.addEventListener('click', play);
+
+    videoPlayButtonSignal.value?.addEventListener("click", play);
     return () =>
-      videoPlayButtonSignal.value?.removeEventListener('click', play);
+      videoPlayButtonSignal.value?.removeEventListener("click", play);
   });
 
   return (
@@ -32,25 +33,26 @@ export default component$(() => {
       <div role="presentation" class="ellipsis ellipsis-purple"></div>
 
       <div class="video-container" id="video">
-          <video
-            class="video"
-            controls
-            ref={videoElementSignal}
-            //poster={POSTER_SRC}
-            src={VIDEO_SRC}
-            playsInline={true}
-            onPlay$={() => (videoIsPlayingSignal.value = true)}
-            onPause$={() => (videoIsPlayingSignal.value = false)}
-            onEnded$={() => (videoIsPlayingSignal.value = false)}
-          />
-          {videoIsPlayingSignal.value === false && <button class="play-button" ref={videoPlayButtonSignal} />}
-        </div>
-
-        
+        <video
+          class="video"
+          controls
+          ref={videoElementSignal}
+          //poster={POSTER_SRC}
+          src={VIDEO_SRC}
+          playsInline={true}
+          onPlay$={() => (videoIsPlayingSignal.value = true)}
+          onPause$={() => (videoIsPlayingSignal.value = false)}
+          onEnded$={() => (videoIsPlayingSignal.value = false)}
+        />
+        {videoIsPlayingSignal.value === false && (
+          <button class="play-button" ref={videoPlayButtonSignal} />
+        )}
+      </div>
 
       <div class="container container-center container-spacing-xl">
         <h2>
-        <span class="highlight">Code speaks louder in motion</span>: <br />amplify your software's message with engaging technical videos. 
+          <span class="highlight">Code speaks louder in motion</span>: <br />
+          amplify your software's message with engaging technical videos.
         </h2>
       </div>
 
@@ -60,25 +62,30 @@ export default component$(() => {
             What we offer?
           </div>
           <ul>
-              <li>
-                <span>Technical video content for your YouTube Channel</span>
-              </li>
-              <li>
-                <span>Documentary and Technical videos for internal purposes, such as learning platforms</span>
-              </li>
-              <li>
-                <span>Instructional Videos for your customers</span>
-              </li>
-              <li>
-                <span>Tailored video courses on specific technologies or software</span>
-              </li>
-              <li>
-                <span>On-boarding videos for new-comers employees</span>
-              </li>
-              <li>
-                <span>Support for create an in-house learning platform</span>
-              </li>
-            </ul>
+            <li>
+              <span>Technical video content for your YouTube Channel</span>
+            </li>
+            <li>
+              <span>
+                Documentary and Technical videos for internal purposes, such as
+                learning platforms
+              </span>
+            </li>
+            <li>
+              <span>Instructional Videos for your customers</span>
+            </li>
+            <li>
+              <span>
+                Tailored video courses on specific technologies or software
+              </span>
+            </li>
+            <li>
+              <span>On-boarding videos for new-comers employees</span>
+            </li>
+            <li>
+              <span>Support for create an in-house learning platform</span>
+            </li>
+          </ul>
         </Infobox>
 
         <div>
@@ -125,16 +132,21 @@ export default component$(() => {
   );
 });
 
-export const head: DocumentHead = ({ url }) => ({
-  title: "Fullstackish | Technical Video content creation and Software Development",
-  meta: [
-    {
-      name: "description",
-      content: "Technical video content creation for the biggest technology-related blogs in the world and software development focused on the design and development of web applications",
-    },
-    {
-      property: 'og:image',
-      content: `${import.meta.env.PUBLIC_WEBSITE_URL}/og-image`,
-    }
-  ],
-});
+export const head: DocumentHead = () => {
+  const siteUrl = import.meta.env.PUBLIC_WEBSITE_URL;
+  return {
+    title:
+      "Fullstackish | Technical Video content creation and Software Development",
+    meta: [
+      {
+        name: "description",
+        content:
+          "Technical video content creation for the biggest technology-related blogs in the world and software development focused on the design and development of web applications",
+      },
+      {
+        property: "og:image",
+        content: `${siteUrl}/og-image`,
+      },
+    ],
+  };
+};

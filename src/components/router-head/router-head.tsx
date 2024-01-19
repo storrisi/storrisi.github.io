@@ -1,4 +1,4 @@
-import { useDocumentHead, useLocation } from "@builder.io/qwik-city";
+import { useDocumentHead } from "@builder.io/qwik-city";
 
 import { component$ } from "@builder.io/qwik";
 
@@ -7,13 +7,13 @@ import { component$ } from "@builder.io/qwik";
  */
 export const RouterHead = component$(() => {
   const head = useDocumentHead();
-  const loc = useLocation();
+  const siteUrl = import.meta.env.PUBLIC_WEBSITE_URL
 
   return (
     <>
       <title>{head.title}</title>
 
-      <link rel="canonical" href={import.meta.env.PUBLIC_WEBSITE_URL} />
+      <link rel="canonical" href={siteUrl} />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="icon" href="./favicon.ico" type="image/x-icon" />
 
