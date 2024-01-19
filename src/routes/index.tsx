@@ -147,6 +147,14 @@ export const head: DocumentHead = () => {
         property: "og:image",
         content: `${siteUrl}/og-image.png`,
       },
+      {
+        property: "og:title",
+        content: "Fullstackish | Bespoke IT Technical Videos: engage, showcase, elevate brand",
+      },
+      {
+        property: "og:description",
+        content: "Bespoke technical video creation for your IT brand. Engage audiences, spotlight innovations. Elevate your digital presence with our expertly crafted video solutions.",
+      },
     ],
   };
 };
