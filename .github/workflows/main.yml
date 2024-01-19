@@ -40,6 +40,8 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm install
+      - name: Logs
+        run: echo "PUBLIC_WEBSITE_URL=${{ secrets.PUBLIC_WEBSITE_URL }}" >> "$GITHUB_OUTPUT"
       - name: Build
         run: npm run build
       - name: Setup Pages
