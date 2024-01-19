@@ -148,11 +148,27 @@ export const head: DocumentHead = () => {
         content: `${siteUrl}/og-image.png`,
       },
       {
+        property: "twitter:image",
+        content: `${siteUrl}/og-image.png`,
+      },
+      {
+        property: "twitter:card",
+        content: `summary_large_image`,
+      },
+      {
         property: "og:title",
         content: "Fullstackish | Bespoke IT Technical Videos: engage, showcase, elevate brand",
       },
       {
+        property: "twitter:title",
+        content: "Fullstackish | Bespoke IT Technical Videos: engage, showcase, elevate brand",
+      },
+      {
         property: "og:description",
+        content: "Bespoke technical video creation for your IT brand. Engage audiences, spotlight innovations. Elevate your digital presence with our expertly crafted video solutions.",
+      },
+      {
+        property: "twitter:description",
         content: "Bespoke technical video creation for your IT brand. Engage audiences, spotlight innovations. Elevate your digital presence with our expertly crafted video solutions.",
       },
       {
