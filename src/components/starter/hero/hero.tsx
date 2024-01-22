@@ -14,7 +14,7 @@ export default component$(() => {
       <h2 class="secondary-text">Crafting tech-focused videos for impactful company promotion.</h2>
       <div class={styles["button-group"]}>
         <button
-        onClick$={() => window.open("https://calendly.com/simo-15/30min", "_blank")}
+        onClick$={() => window.open("https://calendly.com/simonetorrisi/30min", "_blank")}
         >
           📞 Book a call
         </button>
