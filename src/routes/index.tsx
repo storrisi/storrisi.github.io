@@ -96,7 +96,7 @@ export default component$(() => {
             <ul>
               <li>
                 <span>Book a </span>
-                <a href="https://calendly.com/simo-15/30min" target="_blank">
+                <a href="https://calendly.com/simonetorrisi/30min" target="_blank">
                   30 minutes call
                 </a>
               </li>
