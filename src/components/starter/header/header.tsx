@@ -1,5 +1,5 @@
 import { component$ } from "@builder.io/qwik";
-import FullstackishLogo from "../../../media/logo-inverse-148x64.png?jsx";
+import FullstackishLogo from "../../../media/td-logo-vector.png?jsx";
 import styles from "./header.module.css";
 
 export default component$(() => {
@@ -8,29 +8,36 @@ export default component$(() => {
       <div class={["container", styles.wrapper]}>
         <div class={styles.logo}>
           <a href="/" title="qwik">
-            <FullstackishLogo />
+            <FullstackishLogo class={styles.logo} />
           </a>
         </div>
         <ul>
           <li>
             <a
-              href="#video"
+              href="/"
             >
-              Who we are
+              Tutti gli episodi
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.tomorrowdevs.com/community-free"
+            >
+              Community
             </a>
           </li>
           <li>
             <a
               href="#services"
             >
-              Services
+              Supportaci
             </a>
           </li>
           <li>
             <a
               href="#contacts"
             >
-              Contacts
+              Contatti
             </a>
           </li>
         </ul>

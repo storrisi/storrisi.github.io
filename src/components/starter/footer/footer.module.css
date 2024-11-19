@@ -16,6 +16,10 @@
   padding: 0 15px;
 }
 
+.services > li {
+  list-style-type: none;
+}
+
 @media screen and (min-width: 768px) {
   .anchor span {
     display: inline !important;

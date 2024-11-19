@@ -4,7 +4,7 @@ import { fetchFont, ImageResponse, html } from 'og-img';
 export const onGet: RequestHandler = async ({ send }) => {
     
   const fontDirUrl = import.meta.env.PUBLIC_WEBSITE_URL + '/fonts';
-  const iconUrl = import.meta.env.PUBLIC_WEBSITE_URL + '/logo-inverse-148x64.png';
+  const iconUrl = import.meta.env.PUBLIC_WEBSITE_URL + '/tomorrowdevs-podcast.png';
 
   send(
     new ImageResponse(
@@ -15,8 +15,11 @@ export const onGet: RequestHandler = async ({ send }) => {
                 <div tw="flex h-full w-full flex-col justify-center flex-wrap p-16 text-center" style="z-index:2;">
                     <img tw="h-10" src="${iconUrl}">
                     <h1 tw="flex flex-row text-center justify-center items-center flex-wrap gap-1 text-9xl tracking-tight" style="font-family: 'Poppins Bold';color: white;">
-                        Technical <span tw="px-4" style="color:#50cdc5">videos</span> tailored <span tw="px-4" style="color:#50cdc5">for you</span>
+                        TomorrowDevs <span tw="px-4" style="color:#50cdc5">Podcast</span>
                     </h1>
+                    <h2 tw="flex flex-row text-center justify-center items-center flex-wrap gap-1 text-9xl tracking-tight" style="font-family: 'Poppins Bold';color: white;">
+                        Il podcast che parla di persone, tecnologie, carriera in ambito Tech.</span>
+                    </h2>
                 </div>
             </div>
         </div>

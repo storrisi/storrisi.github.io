@@ -1,131 +1,69 @@
-import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
+import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 
-import Hero from "../components/starter/hero/hero";
-import Infobox from "../components/starter/infobox/infobox";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 
-const VIDEO_SRC =
-  "https://res.cloudinary.com/dt7vd3bx7/video/upload/f_auto:video,q_auto/Technical_Video_Creator_ztfyc9";
+import Hero from "../components/starter/hero/hero";
 
 export default component$(() => {
-  const videoElementSignal = useSignal<HTMLAudioElement | undefined>();
-  const videoPlayButtonSignal = useSignal<HTMLButtonElement | undefined>();
-  const videoIsPlayingSignal = useSignal(false);
+  const blogPath = "src/routes/podcast";
+  const blogEntries: any = {};
+  const blogDirs = fs.readdirSync(path.join(blogPath));
 
-  useVisibleTask$(({ track }) => {
-    track(() => videoPlayButtonSignal.value);
-    track(() => videoElementSignal.value);
+  blogDirs.forEach((blog) => {
+    const fileContents = fs.readFileSync(
+      path.join(blogPath, blog, "index@podcast.mdx")
+    );
+    const { data, _ } = matter(fileContents);
 
-    const play = () =>
-      videoIsPlayingSignal.value
-        ? videoElementSignal.value?.pause()
-        : videoElementSignal.value?.play();
-
-    videoPlayButtonSignal.value?.addEventListener("click", play);
-    return () =>
-      videoPlayButtonSignal.value?.removeEventListener("click", play);
+    const title =
+      data == undefined || data.title == undefined ? blog : data.title;
+    const created_at =
+      data == undefined || data.created_at == undefined
+        ? Date.now()
+        : data.created_at;
+    blogEntries[Date.parse(created_at)] = (
+      <li class="container container-flex episode">
+        <div class="podcast_image_wrapper">
+          <a href={"/podcast/" + blog}>
+            <img
+              class="podcast_image"
+              width="320"
+              height="180"
+              src={`http://img.youtube.com/vi/${data.youtube_id}/mqdefault.jpg`}
+            />
+          </a>
+        </div>
+        <div class="podcast_text">
+          <p>{data.created_at}</p>
+          <h3 class="podcast_title">
+            <a href={"/podcast/" + blog}>{title}</a>
+          </h3>
+        </div>
+      </li>
+    );
   });
 
   return (
     <>
-      <Hero />
       <div role="presentation" class="ellipsis"></div>
       <div role="presentation" class="ellipsis ellipsis-purple"></div>
-
-      <div class="video-container" id="video">
-        <video
-          class="video"
-          controls
-          ref={videoElementSignal}
-          //poster={POSTER_SRC}
-          src={VIDEO_SRC}
-          playsInline={true}
-          onPlay$={() => (videoIsPlayingSignal.value = true)}
-          onPause$={() => (videoIsPlayingSignal.value = false)}
-          onEnded$={() => (videoIsPlayingSignal.value = false)}
-        />
-        {videoIsPlayingSignal.value === false && (
-          <button class="play-button" ref={videoPlayButtonSignal} />
-        )}
-      </div>
-
-      <div class="container container-center container-spacing-xl">
-        <h2>
-          <span class="highlight">Code speaks louder in motion</span>: <br />
-          amplify your software's message with engaging technical videos.
-        </h2>
-      </div>
-
-      <div class="container container-flex" id="services">
-        <Infobox>
-          <div q:slot="title" class="icon icon-cli">
-            What we offer?
-          </div>
+      <div class="container container-flex container-center home-container" id="episodes">
+        <div class="hero">
+          <Hero />
+        </div>
+        <div class="container container-flex episodes" id="episodes">
           <ul>
-            <li>
-              <span>Technical video content for your YouTube Channel</span>
-            </li>
-            <li>
-              <span>
-                Documentary and Technical videos for internal purposes, such as
-                learning platforms
-              </span>
-            </li>
-            <li>
-              <span>Instructional Videos for your customers</span>
-            </li>
-            <li>
-              <span>
-                Tailored video courses on specific technologies or software
-              </span>
-            </li>
-            <li>
-              <span>On-boarding videos for new-comers employees</span>
-            </li>
-            <li>
-              <span>Support for create an in-house learning platform</span>
-            </li>
+            {Object.keys(blogEntries)
+              .sort()
+              .reverse()
+              .reduce((acc, c) => {
+                acc.push(blogEntries[c]);
+                return acc;
+              }, [])}
           </ul>
-        </Infobox>
-
-        <div>
-          <Infobox>
-            <div q:slot="title" class="icon icon-community" id="contacts">
-              Keep in touch
-            </div>
-            <ul>
-              <li>
-                <span>Book a </span>
-                <a href="https://calendly.com/simonetorrisi/30min" target="_blank">
-                  30 minutes call
-                </a>
-              </li>
-              <li>
-                <span>Chat with us on </span>
-                <a href="https://t.me/simo_tdevs" target="_blank">
-                  Telegram
-                </a>
-              </li>
-              <li>
-                <span>Watch </span>
-                <a href="https://youtube.com/tomorrowdevs" target="_blank">
-                  our YouTube channel
-                </a>
-              </li>
-              <li>
-                <span>Follow us on </span>
-                <a href="https://www.linkedin.com/in/storrisi/" target="_blank">
-                  LinkedIn
-                </a>
-              </li>
-              <li>
-                <span>Send us an </span>
-                <a href="mailto:contacs@fullstackish.io" target="_blank">
-                  email
-                </a>
-              </li>
-            </ul>
-          </Infobox>
         </div>
       </div>
     </>
@@ -135,13 +73,12 @@ export default component$(() => {
 export const head: DocumentHead = () => {
   const siteUrl = import.meta.env.PUBLIC_WEBSITE_URL;
   return {
-    title:
-      "Fullstackish | Bespoke IT Technical Videos: engage, showcase, elevate brand",
+    title: "TomorrowDevs Podcast | Il podcast che parla di persone, tecnologie, carriera in ambito Tech.",
     meta: [
       {
         name: "description",
         content:
-          "Bespoke technical video creation for your IT brand. Engage audiences, spotlight innovations. Elevate your digital presence with our expertly crafted video solutions.",
+          "TomorrowDevs Podcast è il podcast ufficiale di TomorrowDevs, con i suoi format settimanali: Caffèlattech, Storie di Developers, Hidden Technologies, Refactoring Mindset",
       },
       {
         property: "og:image",
@@ -157,19 +94,23 @@ export const head: DocumentHead = () => {
       },
       {
         property: "og:title",
-        content: "Fullstackish | Bespoke IT Technical Videos: engage, showcase, elevate brand",
+        content:
+          "TomorrowDevs Podcast | Il podcast che parla di persone, tecnologie, carriera in ambito Tech.",
       },
       {
         property: "twitter:title",
-        content: "Fullstackish | Bespoke IT Technical Videos: engage, showcase, elevate brand",
+        content:
+          "TomorrowDevs Podcast | Il podcast che parla di persone, tecnologie, carriera in ambito Tech.",
       },
       {
         property: "og:description",
-        content: "Bespoke technical video creation for your IT brand. Engage audiences, spotlight innovations. Elevate your digital presence with our expertly crafted video solutions.",
+        content:
+          "TomorrowDevs Podcast è il podcast ufficiale di TomorrowDevs, con i suoi format settimanali: Caffèlattech, Storie di Developers, Hidden Technologies, Refactoring Mindset",
       },
       {
         property: "twitter:description",
-        content: "Bespoke technical video creation for your IT brand. Engage audiences, spotlight innovations. Elevate your digital presence with our expertly crafted video solutions.",
+        content:
+          "TomorrowDevs Podcast è il podcast ufficiale di TomorrowDevs, con i suoi format settimanali: Caffèlattech, Storie di Developers, Hidden Technologies, Refactoring Mindset",
       },
       {
         property: "og:image:width",
@@ -189,7 +130,7 @@ export const head: DocumentHead = () => {
       },
       {
         property: "og:url",
-        content: "https://www.fullstackish.io",
+        content: "https://podcast.tomorrowdevs.com",
       },
     ],
   };

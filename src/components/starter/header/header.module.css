@@ -6,6 +6,8 @@
 
 .logo {
   display: inline-block;
+  width: 264px;
+  height: auto;
 }
 .logo a {
   display: block;
@@ -20,7 +22,6 @@
 }
 
 .header li {
-  display: none;
   margin: 0;
   padding: 0;
   font-size: 1rem;
@@ -34,11 +35,29 @@
 }
 
 .header li a:hover {
-  color: var(--qwik-light-blue);
+  color: var(--light-blue);
 }
 
-@media (min-width: 450px) {
-  .header li {
-    display: inline-block;
+@media (max-width: 768px) {
+  .header ul {
+    z-index: 1;
+    position: fixed;
+    bottom: 0;
+    background-color: var(--light-blue);
+    height: 80px;
+    width: 100%;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+
+  .header li a {
+    color: var(--dark-background);
+  }
+
+  .header li a:hover {
+    color: var(--dark-text);
   }
 }
