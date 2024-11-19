@@ -11,7 +11,7 @@ export const Episodes = qwikify$(() => {
   const blogEntries: any = {};
   const blogDirs = fs.readdirSync(path.join(blogPath));
 
-  const [contents, setContents] = useState([]);
+  const [contents, setContents] = useState<any>([]);
   const [category, setCategory] = useState("");
 
   const formatEpisodes = () => {
