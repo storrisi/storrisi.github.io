@@ -141,6 +141,7 @@ ul {
   overflow-x: "hidden";
   max-height: "500px";
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }

@@ -1,51 +1,9 @@
 import { component$ } from "@builder.io/qwik";
-import type { DocumentHead } from "@builder.io/qwik-city";
-
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
-
+import type { DocumentHead } from "@builder.io/qwik-city"; 
 import Hero from "../components/starter/hero/hero";
+import { Episodes } from "~/integrations/react/episodes";
 
 export default component$(() => {
-  const blogPath = "src/routes/podcast";
-  const blogEntries: any = {};
-  const blogDirs = fs.readdirSync(path.join(blogPath));
-
-  blogDirs.forEach((blog) => {
-    const fileContents = fs.readFileSync(
-      path.join(blogPath, blog, "index@podcast.mdx")
-    );
-    const { data, _ } = matter(fileContents);
-
-    const title =
-      data == undefined || data.title == undefined ? blog : data.title;
-    const created_at =
-      data == undefined || data.created_at == undefined
-        ? Date.now()
-        : data.created_at;
-    blogEntries[Date.parse(created_at)] = (
-      <li class="container container-flex episode">
-        <div class="podcast_image_wrapper">
-          <a href={"/podcast/" + blog}>
-            <img
-              class="podcast_image"
-              width="320"
-              height="180"
-              src={`http://img.youtube.com/vi/${data.youtube_id}/mqdefault.jpg`}
-            />
-          </a>
-        </div>
-        <div class="podcast_text">
-          <p>{data.created_at}</p>
-          <h3 class="podcast_title">
-            <a href={"/podcast/" + blog}>{title}</a>
-          </h3>
-        </div>
-      </li>
-    );
-  });
-
   return (
     <>
       <div role="presentation" class="ellipsis"></div>
@@ -54,17 +12,7 @@ export default component$(() => {
         <div class="hero">
           <Hero />
         </div>
-        <div class="container container-flex episodes" id="episodes">
-          <ul>
-            {Object.keys(blogEntries)
-              .sort()
-              .reverse()
-              .reduce((acc, c) => {
-                acc.push(blogEntries[c]);
-                return acc;
-              }, [])}
-          </ul>
-        </div>
+        <Episodes />
       </div>
     </>
   );
