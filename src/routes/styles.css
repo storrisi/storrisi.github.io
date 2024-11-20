@@ -73,11 +73,12 @@ h3 {
 
 .podcast_text {
   text-align: left;
+  max-width: 500px;
 }
 
 .episode-details {
   flex-wrap: wrap;
-  gap: 60px;
+  gap: 40px;
   padding: 10px;
   justify-content: center;
   align-items: center;
@@ -150,7 +151,7 @@ ul {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   min-width: 1000px;
   min-height: 600px;
 }
@@ -177,7 +178,7 @@ ul {
 .episode {
   display: flex;
   padding: 0px;
-  gap: 60px;
+  gap: 40px;
 }
 
 @media screen and (max-width: 1000px) {
@@ -353,6 +354,8 @@ button.button-small {
 .categories {
   display: flex;
   gap: 10px;
+  width: 100%;
+  justify-content: center;
 }
 
 .category {
@@ -362,4 +365,8 @@ button.button-small {
   text-align: center;
   padding: 4px;
   margin: 0;
+}
+
+.category.selected {
+  background-color: var(--dark-background);
 }

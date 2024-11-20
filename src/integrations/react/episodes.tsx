@@ -13,6 +13,12 @@ export const Episodes = qwikify$(
       <div className="container-flex episodes" id="episodes">
         <div className="container-flex categories">
           <button
+            className={`category ${category === "" ? "selected" : ""}`}
+            onClick={() => setCategory("")}
+          >
+            Tutti
+          </button>
+          <button
             className={`category ${category === "caffelattech" ? "selected" : ""}`}
             onClick={() => setCategory("caffelattech")}
           >
