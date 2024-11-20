@@ -59,11 +59,11 @@ export const head: DocumentHead = ({ resolveValue }) => {
       },
       {
         property: "og:image",
-        content: `http://img.youtube.com/vi/${youtube_id}/mqdefault.jpg`,
+        content: `http://img.youtube.com/vi/${youtube_id}/hqdefault.jpg`,
       },
       {
         property: "twitter:image",
-        content: `http://img.youtube.com/vi/${youtube_id}/mqdefault.jpg`,
+        content: `http://img.youtube.com/vi/${youtube_id}/hqdefault.jpg`,
       },
       {
         property: "twitter:card",
@@ -79,10 +79,12 @@ export const head: DocumentHead = ({ resolveValue }) => {
       },
       {
         property: "og:description",
-        content    },
+        content,
+      },
       {
         property: "twitter:description",
-        content      },
+        content,
+      },
       {
         property: "og:image:width",
         content: "1200",
