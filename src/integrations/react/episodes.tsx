@@ -2,13 +2,11 @@
 
 import { qwikify$ } from "@builder.io/qwik-react";
 
-import path from "path";
-
 import { useState } from "react";
 
 export const Episodes = qwikify$(
   ({ blogEntries }: { blogEntries: any }) => {
-    const [contents, setContents] = useState<any>({ ...blogEntries });
+    const [contents] = useState<any>({ ...blogEntries });
     const [category, setCategory] = useState("");
 
     return (
