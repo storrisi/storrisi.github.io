@@ -3,16 +3,40 @@ import type { DocumentHead } from "@builder.io/qwik-city";
 import Hero from "../components/starter/hero/hero";
 import { Episodes } from "~/integrations/react/episodes";
 
+import fs from "fs";
+import matter from "gray-matter";
+import path from "path";
+
 export default component$(() => {
+
+  const blogPath = "src/routes/podcast";
+  const blogEntries: any = {}
+  const blogDirs = fs.readdirSync(path.join(blogPath));
+
+  blogDirs.forEach((blog: any) => {
+    const fileContents = fs.readFileSync(
+      path.join(blogPath, blog, "index@podcast.mdx")
+    );
+    const { data } = matter(fileContents);
+
+    const title =
+      data == undefined || data.title == undefined ? blog : data.title;
+    const created_at =
+      data == undefined || data.created_at == undefined
+        ? Date.now()
+        : data.created_at;
+    blogEntries[Date.parse(created_at)] = { ...data, path: blog, title, created_at };
+  });
+
   return (
     <>
       <div role="presentation" class="ellipsis"></div>
       <div role="presentation" class="ellipsis ellipsis-purple"></div>
-      <div class="container container-flex container-center home-container" id="episodes">
+      <div class="home-container" id="episodes">
         <div class="hero">
           <Hero />
         </div>
-        <Episodes />
+        <Episodes blogEntries={blogEntries} />
       </div>
     </>
   );
