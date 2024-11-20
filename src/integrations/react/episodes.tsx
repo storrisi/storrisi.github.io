@@ -13,25 +13,25 @@ export const Episodes = qwikify$(
       <div className="container-flex episodes" id="episodes">
         <div className="container-flex categories">
           <button
-            className="category"
+            className={`category ${category === "caffelattech" ? "selected" : ""}`}
             onClick={() => setCategory("caffelattech")}
           >
             Caffèlattech
           </button>
           <button
-            className="category"
+            className={`category ${category === "storiedidevelopers" ? "selected" : ""}`}
             onClick={() => setCategory("storiedidevelopers")}
           >
             Storie di Developers
           </button>
           <button
-            className="category"
+            className={`category ${category === "hiddentechnologies" ? "selected" : ""}`}
             onClick={() => setCategory("hiddentechnologies")}
           >
             Hidden Technologies
           </button>
           <button
-            className="category"
+            className={`category ${category === "refactoringmindset" ? "selected" : ""}`}
             onClick={() => setCategory("refactoringmindset")}
           >
             Refactoring Mindset
