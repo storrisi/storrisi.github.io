@@ -1,6 +1,6 @@
 import { component$, Slot, useStyles$ } from "@builder.io/qwik";
 import { routeLoader$, useDocumentHead } from "@builder.io/qwik-city";
-import type { DocumentHead, RequestHandler } from "@builder.io/qwik-city";
+import type { DocumentHead } from "@builder.io/qwik-city";
 import { VideoPlayer } from "~/integrations/react/player";
 import { PodcastPlayer } from "~/integrations/react/spotify";
 import Header from "../components/starter/header/header";
@@ -47,7 +47,7 @@ export const useContents = routeLoader$(async (requestEvent) => {
   return { ...data, content, url: requestEvent.url.href };
 });
 
-export const head: DocumentHead = ({ resolveValue, params }) => {
+export const head: DocumentHead = ({ resolveValue }) => {
   const { youtube_id, title, content, url }: any = resolveValue(useContents);
 
   return {
