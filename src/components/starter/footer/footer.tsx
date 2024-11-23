@@ -66,7 +66,7 @@ export default component$(() => {
       </div>
       <div class="container">
         <a
-          href="https://www.fullstackish.io"
+          href="https://www.tomorrowdevs.com"
           target="_blank"
           class={styles.anchor}
         >
