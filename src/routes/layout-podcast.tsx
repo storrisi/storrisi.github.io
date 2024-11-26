@@ -44,12 +44,16 @@ export const useContents = routeLoader$(async (requestEvent) => {
 
   const { data, content } = matter(fileContents);
 
+  console.log(requestEvent.url.href)
+  console.log(requestEvent.url.pathname)
+  console.log(requestEvent.url)
+
   return { ...data, content, url: requestEvent.url.href };
 });
 
 export const head: DocumentHead = ({ resolveValue }) => {
   const { youtube_id, title, content, url }: any = resolveValue(useContents);
-  console.log(url)
+  
   return {
     title,
     meta: [
