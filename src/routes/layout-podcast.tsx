@@ -49,7 +49,7 @@ export const useContents = routeLoader$(async (requestEvent) => {
 
 export const head: DocumentHead = ({ resolveValue }) => {
   const { youtube_id, title, content, url }: any = resolveValue(useContents);
-
+  console.log(url)
   return {
     title,
     meta: [
