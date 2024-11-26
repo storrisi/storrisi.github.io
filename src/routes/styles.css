@@ -191,7 +191,7 @@ ul {
   
 
   .home-container {
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 0.65fr 1fr;
     grid-template-columns: 100%;
     max-width: 600px;
   }
@@ -371,4 +371,10 @@ button.button-small {
 
 .category.selected {
   background-color: var(--dark-background);
+}
+
+@media screen and (min-width: 768px) {
+  .categories {
+    justify-content: center;
+  }
 }
