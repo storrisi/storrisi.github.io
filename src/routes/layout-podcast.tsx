@@ -105,6 +105,10 @@ export const head: DocumentHead = ({ resolveValue }) => {
         property: "og:url",
         content: url,
       },
+      {
+        property: "canonical",
+        content: url,
+      },
     ],
   };
 };
