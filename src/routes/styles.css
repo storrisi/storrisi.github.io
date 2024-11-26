@@ -67,10 +67,6 @@ h3 {
   margin: 0 auto;
 }
 
-.home-container > div {
-  padding: 0.5rem;
-}
-
 .podcast_text {
   text-align: left;
   max-width: 500px;
